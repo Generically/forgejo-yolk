@@ -22,5 +22,5 @@ COPY        ./tini /home/container/tini
 # RUN         chmod +x /entrypoint.sh
 # RUN         chmod +x /tini.sh
 
-ENTRYPOINT    ["/sbin/tini", "-g", "--"]
+ENTRYPOINT    ["/home/container/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
