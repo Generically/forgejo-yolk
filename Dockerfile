@@ -6,7 +6,7 @@ FROM        codeberg.org/forgejo/forgejo:15
 
 LABEL       org.opencontainers.image.authors=“lorcster222@gmail.com”
 
-RUN         apk update && apk add --no-cache tini
+RUN         apk update && apk add tini
 
 ## Setup user and working directory
 RUN         adduser -D -h /home/container -s /bin/bash container
