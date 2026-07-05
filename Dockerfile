@@ -15,8 +15,8 @@ WORKDIR     /home/container
 
 STOPSIGNAL SIGINT
 
-COPY        ./entrypoint.sh /entrypoint.sh
-COPY        ./tini /sbin/tini
+COPY        ./entrypoint.sh /home/container/entrypoint.sh
+COPY        ./tini /home/container/tini
 
 # COPY        --chown=container:container ./app.ini /home/container/custom/conf/app.ini
 # RUN         chmod +x /entrypoint.sh
