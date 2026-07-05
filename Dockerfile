@@ -16,7 +16,7 @@ WORKDIR     /home/container
 STOPSIGNAL SIGINT
 
 COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
-COPY        --chown=container:container ./tini /tini
+COPY        --chown=container:container ./tini /home/container/tini
 COPY        --chown=container:container ./app.ini /data/gitea/conf/app.ini
 
 RUN         chmod +x /entrypoint.sh
