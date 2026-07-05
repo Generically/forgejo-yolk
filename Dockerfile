@@ -2,7 +2,7 @@
 # Pelican Panel Dockerfile
 # ----------------------------------
 
-FROM        codeberg.org/forgejo/forgejo:15-rootless
+FROM        codeberg.org/forgejo/forgejo:15
 
 LABEL       org.opencontainers.image.authors=“lorcster222@gmail.com”
 
