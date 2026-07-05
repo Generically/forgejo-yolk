@@ -2,25 +2,25 @@
 # Pelican Panel Dockerfile
 # ----------------------------------
 
-FROM        codeberg.org/forgejo/forgejo:15
+FROM        codeberg.org/forgejo/forgejo:15-rootless
 
 LABEL       org.opencontainers.image.authors=“lorcster222@gmail.com”
 
-RUN         apk update && apk add tini
-
 ## Setup user and working directory
-# RUN         adduser -D -h /home/container -s /bin/bash container
-RUN         adduser -D -h /data -s /bin/bash container
+RUN         adduser -D -h /home/container -s /bin/bash container
 USER        container
-# ENV         USER=container HOME=/home/container
-ENV         USER=container HOME=/data
+ENV         USER=container HOME=/home/container
 
-# WORKDIR     /home/container
-WORKDIR     /data
+WORKDIR     /home/container
 
 STOPSIGNAL SIGINT
 
 COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
+COPY        --chown=container:container ./tini /sbin/tini
+
+# COPY        --chown=container:container ./app.ini /home/container/custom/conf/app.ini
 RUN         chmod +x /entrypoint.sh
+# RUN         chmod +x /tini.sh
+
 ENTRYPOINT    ["/sbin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
