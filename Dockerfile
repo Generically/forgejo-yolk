@@ -20,6 +20,7 @@ STOPSIGNAL SIGINT
 COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
 COPY        --chown=container:container ./app.ini /data/gitea/conf/app.ini
 
+RUN chmod 777 /data
 RUN         chmod +x /entrypoint.sh
 
 ENTRYPOINT    ["/sbin/tini", "-g", "--"]
